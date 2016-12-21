@@ -34,6 +34,14 @@ deployment:
       - yarn run update-yarn-lock-file
 ```
 
+### SSH Key for Write Access
+
+In order to deploy from your CI to your repository you need to give CircleCI write access via an SSH key.
+
+Follow the CircleCI instructions for [adding read/write deployment key](https://circleci.com/docs/adding-read-write-deployment-key/).
+
+Once you'd added the key you should see your builds working.
+
 ## Development
 
 **Requirements**
