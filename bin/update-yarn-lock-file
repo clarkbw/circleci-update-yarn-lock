@@ -29,7 +29,7 @@ git config push.default simple
 yarn upgrade
 
 # Output the diff to CI
-git diff
+git --no-pager diff
 
 # Commit and push yarn.lock file
 git add yarn.lock
