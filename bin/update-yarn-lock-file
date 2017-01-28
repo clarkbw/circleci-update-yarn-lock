@@ -3,30 +3,40 @@
 
 # this script is only for CircleCI
 if [[ -z $CIRCLECI ]]; then
-	echo "must be run in CircleCI";
+	echo ">> must be run in CircleCI";
 	exit 1;
 fi
 
 if [[ $CIRCLE_BRANCH != *"greenkeeper"* ]]; then
 	# Not a GreenKeeper Pull Request, aborting
-	echo "not a greenkeeper branch";
+	echo ">> not a greenkeeper branch";
 	exit 0;
 fi
 
-# This script should be running in the build directory
+# ensure we are in the build directory if that exists (does not exist in tests)
+if [[ $CIRCLE_PROJECT_REPONAME != "" ]]; then
+	echo ">> cd $HOME/$CIRCLE_PROJECT_REPONAME";
+	cd $HOME/$CIRCLE_PROJECT_REPONAME;
+fi
+
 # See if commit message includes "update"
-git log --name-status HEAD^..HEAD | grep "update" || { echo "not an update commit"; exit 0; }
+git log --name-status HEAD^..HEAD | grep "update" || { echo ">> not an update commit"; exit 0; }
 
 # only continue if yarn exits with error code (needs to update)
-yarn check && { echo "yarn check passed, yarn.lock does not need to update"; exit 0; }
+yarn check && { echo ">> yarn check passed, yarn.lock does not need to update"; exit 0; }
+
+# Run yarn to create/update lockfile
+yarn generate-lock-entry > yarn.lock && { echo ">> running yarn upgrade"; }
+
+USER_EMAIL=${USER_EMAIL:-"circleci@users.noreply.github.com"}
+USER_NAME=${USER_NAME:-"CircleCI"}
 
 # Setup git for this user
-git config user.email "CircleCI@users.noreply.github.com"
-git config user.name "CircleCI"
+git config user.email $USER_EMAIL
+git config user.name $USER_NAME
 git config push.default simple
 
-# Run yarn to update lockfile
-yarn upgrade
+echo ">> git config $USER_NAME <$USER_EMAIL>";
 
 # Output the diff to CI
 git diff
