@@ -39,7 +39,7 @@ git config push.default simple
 echo ">> git config $USER_NAME <$USER_EMAIL>";
 
 # Output the diff to CI
-git diff
+git --no-pager diff
 
 # Commit and push yarn.lock file
 git add yarn.lock
