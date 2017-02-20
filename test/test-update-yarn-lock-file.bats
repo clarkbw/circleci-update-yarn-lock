@@ -10,6 +10,9 @@ TMP_DIRECTORY=$(mktemp -d)
 ORIGIN_DIRECTORY=$(mktemp -d)
 
 setup() {
+  # in order to run this test on CircleCI we need to reset this
+  unset CIRCLECI;
+
   # Set up a git repo
   cd $TMP_DIRECTORY
   git init
