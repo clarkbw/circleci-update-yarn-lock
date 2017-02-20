@@ -69,6 +69,13 @@ cd circleci-update-yarn-lock
 brew install bats
 ```
 
+* git submodules. We use some nicer scripts with bats and this requires some additional modules
+
+```bash
+git submodule sync
+git submodule update --init
+```
+
 **Running Tests**
 
 ```bash
