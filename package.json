@@ -1,6 +1,6 @@
 {
   "name": "circleci-update-yarn-lock",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Shell script to update your yarn lock file after greenkeeper pulls",
   "repository": "git@github.com:clarkbw/circleci-update-yarn-lock.git",
   "author": "Bryan Clark <clarkbw@gmail.com>",
