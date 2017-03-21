@@ -1,4 +1,5 @@
 # CircleCI update yarn.lock
+This is a fork from [clarkbw/circleci-update-yarn-lock](https://github.com/clarkbw/circleci-update-yarn-lock).
 
 Script to update your [yarn.lock](https://yarnpkg.com/en/docs/yarn-lock) file from CircleCI, run this after every [greenkeeper](https://greenkeeper.io/) PR.
 
@@ -55,7 +56,7 @@ brew install yarn
 **Clone Repository**
 
 ```bash
-git clone --recurse-submodules git@github.com:clarkbw/circleci-update-yarn-lock.git
+git clone --recurse-submodules git@github.com:ethanrubio/circleci-update-yarn-lock.git
 cd circleci-update-yarn-lock
 ```
 
