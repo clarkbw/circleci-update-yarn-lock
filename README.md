@@ -1,5 +1,7 @@
 # CircleCI update yarn.lock
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/clarkbw/circleci-update-yarn-lock.svg)](https://greenkeeper.io/)
+
 Script to update your [yarn.lock](https://yarnpkg.com/en/docs/yarn-lock) file from CircleCI, run this after every [greenkeeper](https://greenkeeper.io/) PR.
 
 ## Usage
