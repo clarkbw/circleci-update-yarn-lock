@@ -26,7 +26,7 @@ git log --name-status HEAD^..HEAD | grep "update" || { echo ">> not an update co
 yarn check && { echo ">> yarn check passed, yarn.lock does not need to update"; exit 0; }
 
 # Run yarn to create/update lockfile
-yarn generate-lock-entry > yarn.lock && { echo ">> running yarn upgrade"; }
+yarn install && { echo ">> running yarn install"; }
 
 USER_EMAIL=${USER_EMAIL:-"circleci@users.noreply.github.com"}
 USER_NAME=${USER_NAME:-"CircleCI"}
